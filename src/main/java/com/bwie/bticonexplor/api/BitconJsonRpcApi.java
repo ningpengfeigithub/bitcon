@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 public interface BitconJsonRpcApi {
 //a
+    //vbb
     JSONObject getBlockChainInfo() throws Throwable;
     JSONObject getmempool() throws Throwable;
     JSONObject getmempoolcontents() throws Throwable;
