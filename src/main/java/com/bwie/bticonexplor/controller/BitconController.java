@@ -1,7 +1,7 @@
 package com.bwie.bticonexplor.controller;
 import com.bwie.bticonexplor.dto.BlockGetDTO ;
 import com.bwie.bticonexplor.dto.BlockListDTO ;
-import io.dy.po.Block;
+import com.bwie.bticonexplor.po.Block ;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;

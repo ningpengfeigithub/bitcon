@@ -3,6 +3,7 @@ package com.bwie.bticonexplor.controller;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.bwie.bticonexplor.api.BitconJsonRpcApi;
 import com.bwie.bticonexplor.api.BitconrestApi ;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,13 +14,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/rest")
+@RequestMapping("/temp")
 @EnableAutoConfiguration
-public class ReatApiController {
+public class TestApiController {
     @Autowired
-    private BitcoinRestApi bitcoinRestApi;
+    private BitconrestApi bitcoinRestApi;
+    @Autowired
+    private BitconJsonRpcApi bitconJsonRpcApi;
 
-    @GetMapping("/chaininfo")
+
+   /* @GetMapping("/chaininfo")
     public String getBlockChainInfo(){
         JSONObject blockChainInfo = bitcoinRestApi.getBlockChainInfo();
         return blockChainInfo.toJSONString();
@@ -64,6 +68,53 @@ public class ReatApiController {
     @GetMapping("/mempool/contents")
     public String getmempoolcontents(){
         JSONObject getmempoolcontents = bitcoinRestApi.getmempoolcontents();
+        return getmempoolcontents.toJSONString();
+    }*/
+   @GetMapping("/chaininfo")
+   public String getBlockChainInfo() throws Throwable {
+       JSONObject blocks= bitconJsonRpcApi.getBlockChainInfo();
+       return blocks.toJSONString();
+   }
+
+    @GetMapping("/tx/{txhash}")
+    public String getTransactionsByhash(@PathVariable String txhash) throws Throwable {
+        JSONObject transactionsByhash = bitconJsonRpcApi.getTransactionsByhash(txhash);
+        return transactionsByhash.toJSONString();
+    }
+
+    @GetMapping("/block/{blockhash}")
+    public String getBlockByblockhash(@PathVariable String blockhash) throws Throwable {
+        JSONObject blockByblockhash = bitconJsonRpcApi.getBlockByblockhash(blockhash);
+        return blockByblockhash.toJSONString();
+    }
+
+    @GetMapping("/block/notxdetails/{blockhash}")
+    public String getBlockBynotxdetailsblockhash(@PathVariable String blockhash) throws Throwable {
+        JSONObject blockBynotxdetailsblockhash = bitconJsonRpcApi.getBlockBynotxdetailsblockhash(blockhash);
+        return blockBynotxdetailsblockhash.toJSONString();
+    }
+
+    @GetMapping("/headers/{count}/{blockhash}")
+    public JSONArray getBlockheaders(@PathVariable Integer count, @PathVariable String blockhash) throws Throwable {
+        JSONArray blockheaders = bitconJsonRpcApi.getBlockheaders(count, blockhash);
+        return blockheaders;
+    }
+
+    @GetMapping("/blockhashbyheight/{height}")
+    public String getblockhashbyheight(@PathVariable Integer height) throws Throwable {
+        JSONObject getblockhashbyheight = bitconJsonRpcApi.getblockhashbyheight(height);
+        return getblockhashbyheight.toJSONString();
+    }
+
+    @GetMapping("/mempool/info")
+    public String getmempool() throws Throwable {
+        JSONObject getmempool = bitconJsonRpcApi.getmempool();
+        return getmempool.toJSONString();
+    }
+
+    @GetMapping("/mempool/contents")
+    public String getmempoolcontents() throws Throwable {
+        JSONObject getmempoolcontents = bitconJsonRpcApi.getmempoolcontents();
         return getmempoolcontents.toJSONString();
     }
 }

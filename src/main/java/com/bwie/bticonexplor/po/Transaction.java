@@ -1,5 +1,5 @@
 package com.bwie.bticonexplor.po;
-
+import java.util.Date;
 public class Transaction {
     private String txhash;
 

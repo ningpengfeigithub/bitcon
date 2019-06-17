@@ -1,5 +1,5 @@
 package com.bwie.bticonexplor.po;
-import java.util.Date
+import java.util.Date;
 public class Block{
     private String blockhash;
 
