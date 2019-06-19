@@ -73,5 +73,22 @@ public class BitcoinServiceImp implements BitcoinService {
         transactionMapper.insert(transaction);
     }
 
+    @Override
+    public void syncTxDetail(JSONObject txJson, String txid) {
+        JSONArray vouts = txJson.getJSONArray("vout");
+        syncTxDetailVout(vouts,txid);
+        JSONArray vins= txJson.getJSONArray("vin");
+    }
+
+    @Override
+    public void syncTxDetailVin(JSONArray vins, String txid) {
+
+    }
+
+    @Override
+    public void syncTxDetailVout(JSONArray vouts, String txid) {
+
+    }
+
 
 }
