@@ -6,9 +6,9 @@ import java.util.Date;
 public interface BitcoinService {
     void syncData(String tempblockhash);
     void synctx(JSONObject txJson, String blockhash, Date time, Integer confirmations);
-    void syncTxDetail(JSONObject txJson, String txid);
+    void syncTxDetail(JSONObject txJson, String txid) throws Throwable;
 
     void syncTxDetailVout(JSONArray vouts, String txid);
 
-    void syncTxDetailVin(JSONArray vins, String txid);
+    void syncTxDetailVin(JSONArray vins, String txid) throws Throwable;
 }
