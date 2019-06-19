@@ -21,6 +21,14 @@ public class TestApiController {
     private BitconrestApi bitcoinRestApi;
     @Autowired
     private BitconJsonRpcApi bitconJsonRpcApi;
+    @GetMapping("/test")
+    public String test(){
+
+        String tempblockhash = "000000000933ea01ad0ee984209779baaec3ced90fa3f408719526f8d77f4943";
+
+
+        return null;
+    }
 
 
    /* @GetMapping("/chaininfo")

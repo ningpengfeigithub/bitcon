@@ -1,6 +1,6 @@
 package com.bwie.bticonexplor.controller;
-import com.bwie.bticonexplor.dto.BlockGetDTO ;
-import com.bwie.bticonexplor.dto.BlockListDTO ;
+import com.bwie.bticonexplor.dto.BlockGetDto;
+import com.bwie.bticonexplor.dto.BlockListDto  ;
 import com.bwie.bticonexplor.po.Block ;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,23 +13,23 @@ import java.util.List;
 public class BitconController {
 
     @GetMapping("/getRecentBlocks")
-    public List<BlockListDTO> getRecentBlocks(){
-        List<BlockListDTO> list = new ArrayList<>();
+    public List<BlockListDto> getRecentBlocks(){
+        List<BlockListDto> list = new ArrayList<>();
 
-        BlockListDTO blockListDTO = new BlockListDTO();
+        BlockListDto blockListDTO = new BlockListDto();
         blockListDTO.setBlockhash("00000000000002160e501d80be1463a6210eccf8a400ebb55fb4cb4549947b48");
         blockListDTO.setHeight(1543589);
-        blockListDTO.setTime(new Date());
+        blockListDTO.setTime(new Date().getTime());
         blockListDTO.setTxsize(35);
         blockListDTO.setChainwork("00000000000000000000000000000000000000000000011b0ce0c84102692201");
         blockListDTO.setSize(12805);
         list.add(blockListDTO);
 
 
-        BlockListDTO blockListDTO1 = new BlockListDTO();
+        BlockListDto blockListDTO1 = new BlockListDto();
         blockListDTO1.setBlockhash("00000000000002940ade0c2b454b0c3b8b9606725c47ee6fffcdd68c5e9e435c");
         blockListDTO1.setHeight(1543644);
-        blockListDTO1.setTime(new Date());
+        blockListDTO1.setTime(new Date().getTime());
         blockListDTO1.setTxsize(8);
         blockListDTO1.setChainwork("00000000000000000000000000000000000000000000011b0ce0c84102692201");
         blockListDTO1.setSize(2133);
@@ -38,8 +38,8 @@ public class BitconController {
     }
 
     @GetMapping("/getByBlockhash/{blockhash}")
-    public BlockGetDTO getByBlockhash(@PathVariable String blockhash){
-        BlockGetDTO blockGetDTO = new BlockGetDTO();
+    public BlockGetDto getByBlockhash(@PathVariable String blockhash){
+        BlockGetDto blockGetDTO = new BlockGetDto();
         blockGetDTO.setBlockhash("0000000000000061aa4efcb9e905c9a41c6c7dc771a8c1a7ec1c45285e851330");
         blockGetDTO.setConfirmations(1);
         blockGetDTO.setStrippedsize(18186);
@@ -74,8 +74,8 @@ public class BitconController {
     }
 
     @GetMapping("/getByHeight/{height}")
-    public BlockGetDTO getByHeight(@PathVariable Integer height){
-        BlockGetDTO blockGetDTO = new BlockGetDTO();
+    public BlockGetDto getByHeight(@PathVariable Integer height){
+        BlockGetDto blockGetDTO = new BlockGetDto();
         blockGetDTO.setBlockhash("0000000000000061aa4efcb9e905c9a41c6c7dc771a8c1a7ec1c45285e851330");
         blockGetDTO.setConfirmations(1);
         blockGetDTO.setStrippedsize(18186);

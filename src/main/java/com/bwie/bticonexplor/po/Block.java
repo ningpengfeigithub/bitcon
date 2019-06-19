@@ -1,6 +1,8 @@
 package com.bwie.bticonexplor.po;
+
 import java.util.Date;
-public class Block{
+
+public class Block {
     private String blockhash;
 
     private Integer confirmations;
@@ -150,5 +152,4 @@ public class Block{
     public void setPrevBlock(String prevBlock) {
         this.prevBlock = prevBlock == null ? null : prevBlock.trim();
     }
-
 }

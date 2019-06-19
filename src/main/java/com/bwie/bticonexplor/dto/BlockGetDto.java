@@ -1,7 +1,8 @@
 package com.bwie.bticonexplor.dto;
- import java.util.Date;
- import java.util.List;
-public class BlockGetDTO {
+
+import java.util.Date;
+import java.util.List;
+public class BlockGetDto {
     private String blockhash;
 
     private Integer confirmations;
@@ -187,31 +188,28 @@ public class BlockGetDTO {
     public void setOutputTotal(Double outputTotal) {
         this.outputTotal = outputTotal;
     }
+
     public Double getFees() {
         return fees;
     }
 
-    public BlockGetDTO setFees(Double fees) {
+    public void setFees(Double fees) {
         this.fees = fees;
-        return this;
     }
 
     public Double getBlockReward() {
         return blockReward;
     }
 
-    public BlockGetDTO setBlockReward(Double blockReward) {
+    public void setBlockReward(Double blockReward) {
         this.blockReward = blockReward;
-        return this;
     }
 
     public List<String> getTransactionList() {
         return transactionList;
     }
 
-    public BlockGetDTO setTransactionList(List<String> transactionList) {
+    public void setTransactionList(List<String> transactionList) {
         this.transactionList = transactionList;
-        return this;
     }
-
 }
