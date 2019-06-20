@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 public interface BitconrestApi{
 
 
-
-
     @GetMapping("/rest/chaininfo.json")
     JSONObject getBlockChainInfo();
 
@@ -26,7 +24,7 @@ public interface BitconrestApi{
     JSONObject getBlockBynotxdetailsblockhash(@PathVariable(value = "blockhash") String blockhash);
 
     @GetMapping("/rest/headers/{count}/{blockhash}.json")
-    JSONArray getBlockheaders(@PathVariable Integer count, @PathVariable(value = "blockhash") String blockhash);
+    JSONArray getBlockheaders(@PathVariable(value = "count") Integer count, @PathVariable(value = "blockhash") String blockhash);
 
     @GetMapping("/rest/blockhashbyheight/{height}.json")
     JSONObject getblockhashbyheight(@PathVariable(value = "height") Integer height);

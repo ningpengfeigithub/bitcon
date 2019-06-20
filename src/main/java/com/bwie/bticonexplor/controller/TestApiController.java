@@ -22,7 +22,7 @@ public class TestApiController {
     @Autowired
     private BitconJsonRpcApi bitconJsonRpcApi;
     @GetMapping("/test")
-    public String test()throws Throwable{
+    public String test(){
         //JSONObject blockChainInfo = bitcoinRestApi.getBlockChainInfo();
         JSONObject transactionsByhash = bitcoinRestApi.getTransactionsByhash("00000000000ed3139372c0b8449f0fb1778b128f247546a551316edf5e531fb7");
         //JSONObject blockByblockhash = bitcoinRestApi.getBlockByblockhash("00000000000ed3139372c0b8449f0fb1778b128f247546a551316edf5e531fb7");
@@ -32,13 +32,12 @@ public class TestApiController {
          //JSONObject getmempool = bitcoinRestApi.getmempool();
          //JSONObject getmempoolcontents = bitcoinRestApi.getmempoolcontents();
 
-
         //JSONObject blocks= bitconJsonRpcApi.getBlockChainInfo();
 
         //String tempblockhash = "000000000933ea01ad0ee984209779baaec3ced90fa3f408719526f8d77f4943";
 
 
-        return null;
+        return transactionsByhash.toJSONString();
     }
     
 }
