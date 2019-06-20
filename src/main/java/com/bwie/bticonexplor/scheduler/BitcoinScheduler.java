@@ -8,10 +8,10 @@ import java.util.logging.Logger;
 
 @Component
 public class BitcoinScheduler {
-    private Logger logger= (Logger) LoggerFactory.getLogger(this.getClass());
+    //private Logger logger= (Logger) LoggerFactory.getLogger(this.getClass());
 
     @Scheduled(fixedRate = 10000)
     public void syncData(){
-       logger.info("begin sync bitcoin data");
+      // logger.info("begin sync bitcoin data");
     }
 }

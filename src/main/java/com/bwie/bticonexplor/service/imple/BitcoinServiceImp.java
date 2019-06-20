@@ -33,11 +33,23 @@ public class BitcoinServiceImp implements BitcoinService {
     private BitconJsonRpcApi bitconJsonRpcApi;
     @Autowired
     private TransactionDetailMapper transactionDetailMapper;
+
+    @Override
+    public void blockchinfromhash(String blockhash) {
+        logger.info("begin to sync blockchain from {}", blockhash);
+        String tempBlockhash = blockhash;
+        while (tempBlockhash != null && !tempBlockhash.isEmpty()){
+
+            String nextBlock = syncData(tempBlockhash);
+            tempBlockhash = nextBlock;
+        }
+        logger.info("end sync blockchain");
+    }
+
     @Override
     @Transactional
-    public void syncData(String tempblockhash) {
-      while(tempblockhash !=null && !tempblockhash.isEmpty()){
-          logger.info("begin to sync block from {}", tempblockhash);
+    public String syncData(String tempblockhash) {
+
           JSONObject blockjson = bitconrestApi.getBlockByblockhash(tempblockhash);
           Block block = new Block();
           block.setBlockhash(blockjson.getString("hash"));
@@ -56,18 +68,16 @@ public class BitcoinServiceImp implements BitcoinService {
           block.setStrippedsize(blockjson.getInteger("strippedsize"));
           block.setVersion(blockjson.getInteger("version"));
           block.setWeight(blockjson.getInteger("weight"));
+          Integer confirmations = blockjson.getInteger("confirmations");
           blockMapper.insert(block);
 
           JSONArray txesArray = blockjson.getJSONArray("tx");
 
           for (Object txObj : txesArray) {
               JSONObject jsonObject = new JSONObject((LinkedHashMap) txObj);
-              //synctx(jsonObject, tempblockhash, time, confirmations);
+              synctx(jsonObject, tempblockhash, time,confirmations);
           }
-
-          tempblockhash = block.getNextBlock();
-      }
-        logger.info("end sync block");
+        return block.getNextBlock();
     }
 
     @Override
